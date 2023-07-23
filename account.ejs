@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Brainsnap Login</title>
+  </head>
+  <body>
+    <h2>Welcome!!</h2>
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <form method="post" action="/signup">
+          <h1>Create Account</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="UserName" name="signupUsername" />
+          <input type="email" placeholder="Email" name="signupEmail" />
+          <div class="password-field-container">
+            <input
+              type="password"
+              placeholder="Password"
+              name="signupPassword"
+              id="signupPassword"
+              class="password-field show-password"
+              required
+            />
+            <span class="password-toggle" id="passwordToggle">
+              <i class="far fa-eye"></i>
+            </span>
+          </div>
+          <ul class="password-instructions">
+            <li>
+              Password must contain at least <br /><b>2 lowercase letters.</b>
+            </li>
+            <li>
+              Password must contain at least <br /><b>2 uppercase letters.</b>
+            </li>
+            <li>Password must contain at least <br /><b>2 digits.</b></li>
+            <li>
+              Password must contain at least
+              <b>2 special characters(@,#,$...).</b>
+            </li>
+            <li>Password must be <b>8 characters long.</b></li>
+          </ul>
+
+          <button>Sign Up</button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container" id="loginFormContainer">
+        <form method="post" action="/login">
+          <h1>Sign in</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your account</span>
+          <input
+            type="text"
+            placeholder="Username or Email"
+            name="loginIdentifier"
+          />
+          <div class="password-field-container">
+            <input
+              type="password"
+              placeholder="Password"
+              name="loginPassword"
+              class="show-password"
+            />
+            <span class="password-toggle" id="loginpasswordToggle">
+              <i class="far fa-eye"></i>
+            </span>
+          </div>
+          <label>
+            <input type="checkbox" name="rememberMe" />
+            Remember Me
+          </label>
+          <a href="#" id="forgotPasswordLink">Forgot your password?</a>
+          <button>Sign In</button>
+        </form>
+        <div
+          class="form-container password-reset-container"
+          id="passwordResetContainer"
+          style="display: none"
+        >
+          <form method="post" action="/forgot-password">
+            <h1>Forgot Password</h1>
+            <input
+              type="text"
+              placeholder="Username or Email"
+              name="forgotIdentifier"
+              required
+            />
+            <button>Send Reset Link</button>
+            <a href="#" id="goBackLink">Go back</a>
+          </form>
+        </div>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>
+              To keep connected with us please login with your personal info
+            </p>
+            <button class="ghost" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Student!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <button class="ghost" id="signUp">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const signUpButton = document.getElementById("signUp");
+      const signInButton = document.getElementById("signIn");
+      const container = document.getElementById("container");
+
+      // Get the "Forgot Password" link, "Go back" link, and the form containers
+      const forgotPasswordLink = document.querySelector("#forgotPasswordLink");
+      const passwordResetContainer = document.querySelector(
+        "#passwordResetContainer"
+      );
+      const signInContainer = document.querySelector(".sign-in-container");
+      const goBackLink = document.querySelector("#goBackLink");
+
+      // Add click event listener to the "Forgot Password" link
+      forgotPasswordLink.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+        passwordResetContainer.style.display = "block"; // Show the password reset form container
+      });
+
+      // Add click event listener to the "Go back" link
+      goBackLink.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the default link behavior
+        passwordResetContainer.style.display = "none"; // Hide the password reset form container
+        signInContainer.style.display = "block"; // Show the sign-in form container
+      });
+      signUpButton.addEventListener("click", () => {
+        container.classList.add("right-panel-active");
+      });
+
+      signInButton.addEventListener("click", () => {
+        container.classList.remove("right-panel-active");
+      });
+
+      const passwordFields = document.querySelectorAll(".password-field");
+      const passwordInstructions = document.querySelectorAll(
+        ".password-instructions"
+      );
+
+      passwordFields.forEach((passwordField, index) => {
+        passwordField.addEventListener("focus", () => {
+          passwordInstructions[index].classList.add("show");
+        });
+
+        passwordField.addEventListener("blur", () => {
+          if (passwordField.value === "") {
+            passwordInstructions[index].classList.remove("show");
+          }
+        });
+
+        passwordField.addEventListener("input", () => {
+          if (passwordField.value !== "") {
+            passwordInstructions[index].classList.remove("show");
+          }
+        });
+      });
+      const passwordField = document.querySelectorAll(".show-password");
+      const passwordToggle = document.getElementById("passwordToggle");
+
+      passwordToggle.addEventListener("click", () => {
+        passwordField.forEach((passwordField) => {
+          const fieldType = passwordField.getAttribute("type");
+          if (fieldType === "password") {
+            passwordField.setAttribute("type", "text");
+            passwordToggle.innerHTML = '<i class="far fa-eye-slash"></i>';
+          } else {
+            passwordField.setAttribute("type", "password");
+            passwordToggle.innerHTML = '<i class="far fa-eye"></i>';
+          }
+        });
+      });
+      // Use a more specific selector to target the password input field only within the login form container
+      const passwordFieldsLogin = document.querySelectorAll(
+        "#loginFormContainer .show-password"
+      );
+      const loginpasswordToggle = document.getElementById(
+        "loginpasswordToggle"
+      );
+
+      loginpasswordToggle.addEventListener("click", () => {
+        passwordFieldsLogin.forEach((passwordField) => {
+          const fieldType = passwordField.getAttribute("type");
+          if (fieldType === "password") {
+            passwordField.setAttribute("type", "text");
+            loginpasswordToggle.innerHTML = '<i class="far fa-eye-slash"></i>';
+          } else {
+            passwordField.setAttribute("type", "password");
+            loginpasswordToggle.innerHTML = '<i class="far fa-eye"></i>';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

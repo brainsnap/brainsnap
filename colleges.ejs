@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="colleges.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>BrainSnap</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="navbar">
+        <img
+          src="https://cdn.glitch.global/3523a55e-8459-4f91-9dbe-6a88308e2347/Logo.png?v=1689698132799"
+          alt=""
+          class="logo"
+        />
+        <div class="hamburger-icon">
+          <i class="fa-solid fa-bars hamburger"></i>
+        </div>
+        <ol class="menu-bar">
+          <li class="menu-li">
+            <a class="menu-link" href="/home">Home</a>
+          </li>
+          <li class="menu-li"><a class="menu-link" href="#">About</a></li>
+          <li class="menu-li">
+            <a class="menu-link" href="#">Colleges</a>
+          </li>
+          <li class="menu-li">
+            <a class="menu-link">Contact</a>
+            <ol class="drop">
+              <li class="menu-li">
+                <a class="menu-sublink" href="tel:7015377087">Call Us</a>
+              </li>
+              <li class="menu-li">
+                <a
+                  class="menu-sublink"
+                  href="mailto:rudraksh746.be22@chitkara.edu.in"
+                  >Mail Us</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="menu-li">
+            <a
+              class="menu-link"
+              href="https://goo.gl/maps/9d9a2xJMqU9moFhK6"
+              target="_blank"
+              >Find Us</a
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="profile relative">
+        <div class="profile-picture">
+          <div class="profile-icon">
+            <i class="fa-regular fa-user" style="color: #000000"></i>
+          </div>
+          <% if (profilePictureURL) { %>
+          <img src="./uploads/<%= profilePictureURL %>" alt="Profile Picture" />
+          <% } else { %>
+          <img
+            class="h-16 w-16 rounded-full object-cover"
+            src="https://cdn.glitch.global/48491b29-1786-48b2-b4a6-5cb4f74999e0/pfp.png?v=1689801003255"
+            alt="Default Profile Picture"
+          />
+          <% } %>
+        </div>
+        <div
+          class="dropdown absolute right-0 mt-2 bg-white border border-gray-300 rounded shadow-lg"
+          style="display: none"
+        >
+          <% if (username) { %>
+          <p class="pfp-text block px-4 py-2 text-gray-800 hover:bg-gray-100">
+            Welcome, <%= username %>
+          </p>
+          <% } else { %>
+          <p class="pfp-text block px-4 py-2 text-gray-800 hover:bg-gray-100">
+            Welcome, Student
+          </p>
+          <% } %>
+          <ul class="py-1">
+            <li>
+              <a
+                href="/profile"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                >View Profile</a
+              >
+            </li>
+            <li>
+              <a
+                href="/edit-profile"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                >Edit Profile</a
+              >
+            </li>
+            <li>
+              <a
+                href="/logout"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <section class="section sec1">
+      <h2 class="colleges-heading">Our<br />Colleges</h2>
+      <p class="colleges-paragraph">
+        "Easy Access to top notch study mterial from our partnered Colleges"
+      </p>
+    </section>
+    <section class="section sec2">
+      <div class="search-bar">
+        <label>
+          <input type="text" id="search-input" required />
+          <ul>
+            <li s>s</li>
+            <li e>e</li>
+            <li a>a</li>
+            <li r>r</li>
+            <li c>c</li>
+            <li h>h</li>
+          </ul>
+        </label>
+      </div>
+    </section>
+    <section class="section sec3">
+      <h1 class="list-heading">Select Your College</h1>
+      <ul id="college-list">
+        <li>
+          <img
+            src="https://chitkara-bot.itmatic.io/public/frontend/images/cu-fevicon.png"
+            alt="College A Logo"
+            class="college-logo"
+          />
+          <a href="/chitkara">Chitkara University</a>
+        </li>
+        <li>
+          <img
+            src="https://www.cuchd.in/add_to_homescreen/android-icon-192x192.png"
+            alt="College B Logo"
+            class="college-logo"
+          />
+          <a href="college_b.html">Chandigarh University</a>
+        </li>
+        <li>
+          <img
+            src="https://pec.ac.in/sites/default/files/favicon-1.png"
+            alt="College C Logo"
+            class="college-logo"
+          />
+          <a href="college_c.html">Punjab Engineering College</a>
+        </li>
+        <li>
+          <img
+            src="https://chitkara-bot.itmatic.io/public/frontend/images/cu-fevicon.png"
+            alt="College D Logo"
+            class="college-logo"
+          />
+          <a href="college_d.html">Delhi Technical University</a>
+        </li>
+        <!-- Add more college names and logos here -->
+      </ul>
+
+      <p id="search-error" class="error-message" style="display: none">
+        No search results found.
+      </p>
+    </section>
+    <footer>
+      <div class="footer-text">© 2023 BrainSnap. All rights reserved.</div>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/home#contact">Contact Us</a></li>
+        <li><a href="/">Terms of Service</a></li>
+        <li><a href="/">Privacy Policy</a></li>
+      </ul>
+      <ul class="social-icons">
+        <li>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </li>
+      </ul>
+      <div class="footer-text">Follow us on social media for updates</div>
+    </footer>
+    <script>
+      // JavaScript for the hamburger menu
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburgerIcon = document.querySelector(".hamburger-icon");
+        const menuBar = document.querySelector(".menu-bar");
+
+        hamburgerIcon.addEventListener("click", function () {
+          menuBar.classList.toggle("open"); // Toggle the 'open' class to show/hide the menu bar
+        });
+        // Close the menu when clicking outside the menu bar
+        document.addEventListener("click", function (event) {
+          const targetElement = event.target;
+          if (
+            !menuBar.contains(targetElement) &&
+            !hamburgerIcon.contains(targetElement)
+          ) {
+            menuBar.classList.remove("open");
+          }
+        });
+      });
+
+      window.addEventListener("DOMContentLoaded", function () {
+        var collegeList = document.getElementById("college-list");
+        var colleges = collegeList.getElementsByTagName("li");
+        var collegesArray = Array.from(colleges);
+
+        collegesArray.sort(function (a, b) {
+          var collegeA = a.textContent.toUpperCase();
+          var collegeB = b.textContent.toUpperCase();
+
+          if (collegeA < collegeB) {
+            return -1;
+          }
+          if (collegeA > collegeB) {
+            return 1;
+          }
+          return 0;
+        });
+
+        collegesArray.forEach(function (college) {
+          collegeList.appendChild(college);
+        });
+
+        document
+          .getElementById("search-input")
+          .addEventListener("input", function () {
+            var searchInput = this.value.toLowerCase().trim();
+
+            var searchError = document.getElementById("search-error");
+            searchError.style.display = "none";
+
+            Array.from(colleges).forEach(function (college) {
+              var collegeName = college
+                .querySelector("a")
+                .textContent.toLowerCase();
+
+              if (collegeName.includes(searchInput)) {
+                college.style.display = "flex";
+              } else {
+                college.style.display = "none";
+              }
+            });
+
+            if (
+              !collegesArray.some(function (college) {
+                return college.style.display !== "none";
+              })
+            ) {
+              searchError.style.display = "block";
+            }
+          });
+
+        // JavaScript to handle visibility on hover
+        const dropdownContainer = document.querySelector(".dropdown");
+
+        document
+          .querySelector(".profile")
+          .addEventListener("mouseenter", () => {
+            dropdownContainer.style.display = "block";
+          });
+
+        document
+          .querySelector(".profile")
+          .addEventListener("mouseleave", () => {
+            dropdownContainer.style.display = "none";
+          });
+      });
+    </script>
+  </body>
+</html>

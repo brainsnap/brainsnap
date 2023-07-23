@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="profile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fonts.googleapis.com/css?family=Pacifico"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fonts.googleapis.com/css?family=Oswald"
+    />
+    <title>Profile</title>
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="outer-div">
+      <div class="inner-div">
+        <div class="front">
+          <div class="front__bkg-photo"></div>
+          <div>
+            <% if (profilePictureURL) { %>
+            <img
+              class="front__face-photo"
+              src="./uploads/<%= profilePictureURL %>"
+              alt="Profile Picture"
+            />
+            <% } else { %>
+            <img
+              class="front__face-photo"
+              src="https://cdn.glitch.global/48491b29-1786-48b2-b4a6-5cb4f74999e0/pfp.png?v=1689801003255"
+              alt="Default Profile Picture"
+            />
+            <% } %>
+          </div>
+          <div class="front__text">
+            <h3 class="front__text-header"><%= username %></h3>
+            <p class="front__text-para">
+              <i class="fa-solid fa-envelope front-icons"></i><%= email %>
+            </p>
+
+            <span class="front__text-hover">Hover For surprise!!</span>
+          </div>
+        </div>
+        <div class="back">
+          <div class="back__message">Thanks for being a member!!</div>
+          <button class="more-options-btn">More Options</button>
+          <div class="profile-links">
+            <a href="/edit-profile" title="Update Profile"
+              ><i class="fas fa-user-edit"></i
+            ></a>
+            <br />
+            <% if (profilePictureURL) { %>
+            <a href="/delete-profile-picture" title="Delete Profile Picture"
+              ><i class="fas fa-trash"></i
+            ></a>
+            <br />
+            <% } %>
+            <a href="/delete-account" title="Delete Account Permanently"
+              ><i class="fas fa-user-times"></i
+            ></a>
+            <br />
+            <a href="/logout" title="Logout"
+              ><i class="fas fa-sign-out-alt"></i
+            ></a>
+            <br />
+            <a href="/home" title="Back to Home"><i class="fas fa-home"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add this inside your <body> tag -->
+    <div class="celebration">
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+    </div>
+  </body>
+  <script>
+    // Add this JavaScript code to your existing script
+    const profilePicture = document.querySelector(".inner-div");
+
+    profilePicture.addEventListener("mouseenter", () => {
+      if (!document.body.classList.contains("celebrate")) {
+        document.body.classList.add("celebrate");
+        createConfetti();
+      }
+    });
+
+    profilePicture.addEventListener("mouseleave", () => {
+      document.body.classList.remove("celebrate");
+    });
+
+    function createConfetti() {
+      const celebrationDiv = document.createElement("div");
+      celebrationDiv.classList.add("celebration");
+
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.backgroundColor = getRandomColor();
+        confetti.style.top = `${Math.random() * 100}%`;
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.animationDelay = `${Math.random() * 1}s`;
+        celebrationDiv.appendChild(confetti);
+      }
+
+      document.body.appendChild(celebrationDiv);
+    }
+
+    function getRandomColor() {
+      const letters = "0123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    const moreOptionsBtn = document.querySelector(".more-options-btn");
+    const profileLinks = document.querySelector(".profile-links");
+
+    moreOptionsBtn.addEventListener("click", () => {
+      profileLinks.classList.toggle("show-links");
+    });
+  </script>
+</html>

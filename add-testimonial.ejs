@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Submit Testimonial</title>
+  </head>
+  <body>
+    <div class="Testimonialcontainer" id="container">
+      <div class="form-container testimonial-container">
+        <form
+          action="/submit-testimonial"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <h2>Submit Testimonial</h2>
+          <label for="author">Author:</label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            value="<%= username %>"
+            required
+          />
+
+          <label for="testimonialText">Testimonial:</label>
+          <textarea
+            id="testimonialText"
+            name="testimonialText"
+            rows="5"
+            required
+          ></textarea>
+
+          <label for="testimonialImage">Image:</label>
+          <input
+            type="file"
+            id="testimonialImage"
+            name="testimonialImage"
+            accept="image/*"
+          />
+
+          <button type="submit">Submit Testimonial</button>
+          <a href="/home">Back To Home</a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

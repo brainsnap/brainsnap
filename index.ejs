@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="main.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>BrainSnap</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="navbar">
+        <img
+          src="https://cdn.glitch.global/3523a55e-8459-4f91-9dbe-6a88308e2347/Logo.png?v=1689698132799"
+          alt=""
+          class="logo"
+        />
+        <div class="hamburger-icon">
+          <i class="fa-solid fa-bars hamburger"></i>
+        </div>
+        <ol class="menu-bar">
+          <li class="menu-li">
+            <a class="menu-link" href="#" target="_self">Home</a>
+          </li>
+          <li class="menu-li"><a class="menu-link" href="#home">About</a></li>
+          <li class="menu-li">
+            <a class="menu-link" href="/colleges">Colleges</a>
+          </li>
+          <li class="menu-li">
+            <a class="menu-link">Contact</a>
+            <ol class="drop">
+              <li class="menu-li">
+                <a class="menu-sublink" href="tel:7015377087">Call Us</a>
+              </li>
+              <li class="menu-li">
+                <a
+                  class="menu-sublink"
+                  href="mailto:rudraksh746.be22@chitkara.edu.in"
+                  >Mail Us</a
+                >
+              </li>
+            </ol>
+          </li>
+          <li class="menu-li">
+            <a
+              class="menu-link"
+              href="https://goo.gl/maps/9d9a2xJMqU9moFhK6"
+              target="_blank"
+              >Find Us</a
+            >
+          </li>
+        </ol>
+      </div>
+      <div class="profile relative">
+        <div class="profile-picture">
+          <div class="profile-icon">
+            <i class="fa-regular fa-user" style="color: #000000"></i>
+          </div>
+          <% if (profilePictureURL) { %>
+          <img
+            src="./uploads/<%= profilePictureURL %>"
+            alt="Profile Picture"
+            class="pfp"
+          />
+          <% } else { %>
+          <img
+            class="h-16 w-16 rounded-full object-cover"
+            src="https://cdn.glitch.global/48491b29-1786-48b2-b4a6-5cb4f74999e0/pfp.png?v=1689801003255"
+            alt="Default Profile Picture"
+            class="pfp"
+          />
+          <% } %>
+        </div>
+        <div
+          class="dropdown absolute right-0 mt-2 bg-white border border-gray-300 rounded shadow-lg"
+          style="display: none"
+        >
+          <% if (username) { %>
+          <p class="pfp-text block px-4 py-2 text-gray-800 hover:bg-gray-100">Welcome, <%= username %></p>
+          <% } else { %>
+          <p class="pfp-text block px-4 py-2 text-gray-800 hover:bg-gray-100">Welcome, Student</p>
+          <% } %>
+          <ul class="py-1">
+            <li>
+              <a
+                href="/profile"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                >View Profile</a
+              >
+            </li>
+            <li>
+              <a
+                href="/edit-profile"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                >Edit Profile</a
+              >
+            </li>
+            <li>
+              <a
+                href="/logout"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div>
+      <section class="sec" id="home">
+        <div>
+          <h1>
+            <span>Welcome To<br />BrainSnap</span>
+          </h1>
+        </div>
+        <div class="box">
+          <div class="content">
+            <p class="dynamic-paragraph"></p>
+          </div>
+        </div>
+        <a class="login-redirect" href="/colleges">Let's Go!</a>
+      </section>
+      <section class="sec2">
+        <div>
+          <h1>Our Services</h1>
+        </div>
+        <div class="services" id="#services">
+          <div class="serv1">
+            <a href="#">
+              <h3>Provide Study Material</h3>
+              <img
+                src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80"
+                alt="Service 1"
+              />
+            </a>
+            <p>
+              Access a wide range of high-quality study materials, including
+              lecture notes, textbooks, and reference guides. Our comprehensive
+              collection covers various subjects and topics to support your
+              learning journey.
+            </p>
+          </div>
+          <div class="serv2">
+            <a href="#">
+              <h3>Interactive Learning Tools</h3>
+              <img
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                alt="Service 2"
+              />
+            </a>
+            <p>
+              Engage in interactive learning experiences with our innovative
+              resources. From interactive quizzes and educational games to
+              virtual simulations, we offer dynamic tools to enhance your
+              understanding and retention of key concepts.
+            </p>
+          </div>
+          <div class="serv3">
+            <a href="#">
+              <h3>Personalized Study Plans</h3>
+              <img
+                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+                alt="Service 3"
+              />
+            </a>
+            <p>
+              Customize your study plan based on your unique needs and goals.
+              Our platform allows you to set study targets, track your progress,
+              and receive personalized recommendations to optimize your study
+              routine and maximize productivity.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="testimonial-section">
+        <h2>Testimonials</h2>
+        <div class="testimonial-carousel">
+          <% for (const testimonial of testimonials) { %>
+          <div class="testimonial">
+            <% if (testimonial.testimonialImage) { %>
+            <img
+              src="/uploads/<%= testimonial.testimonialImage %>"
+              alt="Testimonial Image"
+              class="testimonial-image"
+            />
+            <% } else if (testimonial.authorProfilePicture) { %>
+            <img
+              src="/uploads/<%= testimonial.authorProfilePicture %>"
+              alt=""
+              class="testimonial-image"
+            />
+            <% } else { %>
+            <i
+              class="fa-regular fa-user"
+              style="color: #000000; font-size: 40px; margin: 0 auto 10px"
+            ></i>
+            <% } %>
+            <p class="testimonial-text"><%= testimonial.testimonialText %></p>
+            <p class="testimonial-author">- <%= testimonial.author %></p>
+          </div>
+          <% } %>
+          <div class="testimonial">
+            <a href="/submit-testimonial">Add Your Testimony</a>
+          </div>
+          <!-- Add more testimonials here -->
+        </div>
+        <div class="testimonial-arrows">
+          <span class="arrow left-arrow"
+            ><i class="fa-solid fa-caret-left" style="color: #000000"></i
+          ></span>
+          <span class="arrow right-arrow"
+            ><i class="fa-solid fa-caret-right" style="color: #000000"></i
+          ></span>
+        </div>
+      </section>
+      <section class="contact-section" id="contact">
+        <div class="contact-content">
+          <h2>Contact Us</h2>
+          <p>Fill out the form below and we'll get back to you soon!</p>
+        </div>
+        <div class="contact-form" id="contact">
+          <form id="contact-form" action="/contact" method="POST">
+            <input type="hidden" name="_captcha" value="false" />
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <div class="footer-text">© 2023 BrainSnap. All rights reserved.</div>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="/">Terms of Service</a></li>
+        <li><a href="/">Privacy Policy</a></li>
+      </ul>
+      <ul class="social-icons">
+        <li>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </li>
+      </ul>
+      <div class="footer-text">Follow us on social media for updates</div>
+    </footer>
+  </body>
+  <script src="main.js"></script>
+</html>

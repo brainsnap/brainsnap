@@ -1,0 +1,297 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+body {
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: url("https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-0.3.5&s=4222852e25e0f57d9485f7889957e99a&auto=format&fit=crop&w=2000&q=80");
+  background-size: cover;
+  background-position: 0 50%;
+  background: #efdecd;
+}
+.background:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+}
+.outer-div,
+.inner-div {
+  height: 450px;
+  max-width: 300px;
+  margin: 0 auto;
+  position: relative;
+}
+.outer-div {
+  perspective: 900px;
+  perspective-origin: 50% calc(50% - 18em);
+}
+.inner-div {
+  margin: 0 auto;
+  border-radius: 5px;
+  font-weight: 400;
+  color: #071011;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
+  transform-style: preserve-3d;
+  /*&:hover .front__face-photo, &:hover .front__footer {
+    opacity: 1;
+ }
+ */
+}
+.inner-div:hover .social-icon {
+  opacity: 1;
+  top: 0;
+}
+.outer-div:hover .inner-div {
+  transform: rotateY(180deg);
+}
+.front,
+.back {
+  position: relative;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+.front {
+  cursor: pointer;
+  height: 100%;
+  background: #fff;
+  backface-visibility: hidden;
+  border-radius: 5px;
+  box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.front__bkg-photo {
+  position: relative;
+  height: 150px;
+  width: 300px;
+  background: url("https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=88672068827eaeeab540f584b883cc66&auto=format&fit=crop&w=1164&q=80")
+    no-repeat;
+  background-size: cover;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.front__bkg-photo:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.front__face-photo {
+  position: relative;
+  top: -60px;
+  height: 120px;
+  width: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  background: #000;
+  background-size: contain;
+  overflow: hidden;
+  object-fit: cover;
+  /* backface-visibility: hidden;
+  transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
+  z-index: 3;
+ */
+}
+.front__text {
+  position: relative;
+  top: -55px;
+  margin: 0 auto;
+  font-family: "Montserrat";
+  font-size: 18px;
+  backface-visibility: hidden;
+}
+.front__text .front__text-header {
+  font-weight: 700;
+  font-family: "Oswald";
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.front__text .front__text-para {
+  position: relative;
+  top: -5px;
+  color: #000;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+}
+.front__text .front-icons {
+  position: relative;
+  top: 0;
+  font-size: 14px;
+  margin-right: 6px;
+  color: gray;
+}
+.front__text .front__text-hover {
+  position: relative;
+  top: 10px;
+  font-size: 10px;
+  color: tomato;
+  backface-visibility: hidden;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border: 2px solid tomato;
+  padding: 8px 15px;
+  border-radius: 30px;
+  background: tomato;
+  color: #fff;
+}
+/* ... other styles ... */
+
+.back {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #9f8170;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column; /* Change row to column to stack the content */
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px; /* Add padding to center the content vertically */
+}
+
+.back__message {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  padding: 20px;
+  font-family: "Pacifico", sans-serif;
+  margin-bottom: 20px;
+}
+
+/* Add this CSS at the end of your existing CSS file */
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.celebration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Replace the existing .confetti styles with the following */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  border-radius: 50%;
+  animation: confetti 1s linear 10s;
+  box-shadow: 0 0 10px #fff, 0 0 20px #f0f, 0 0 30px #0ff, 0 0 40px #0f0,
+    0 0 50px #ff0;
+}
+
+/* Add the styles for each letter confetti element */
+.confetti:before {
+  content: var(--letter);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 8px;
+}
+
+/* Add more confetti elements with bright colors */
+.confetti:nth-child(1) {
+  top: 90%;
+  left: 25%;
+  background-color: #f44336;
+  animation-delay: 0s;
+  box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000,
+    0 0 40px #ff0000, 0 0 50px #ff0000;
+}
+
+.confetti:nth-child(2) {
+  top: 80%;
+  left: 50%;
+  background-color: #ff9800;
+  animation-delay: 0.2s;
+  box-shadow: 0 0 10px #ff8c00, 0 0 20px #ff8c00, 0 0 30px #ff8c00,
+    0 0 40px #ff8c00, 0 0 50px #ff8c00;
+}
+
+.confetti:nth-child(3) {
+  top: 85%;
+  left: 75%;
+  background-color: #e91e63;
+  animation-delay: 0.1s;
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff,
+    0 0 40px #ff00ff, 0 0 50px #ff00ff;
+}
+
+.more-options-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.profile-links {
+  display: flex;
+  flex-direction: row-reverse;
+  align-self: center;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  font-size: 10px;
+  text-align: left;
+}
+
+.show-links {
+  display: flex;
+  max-height: 250px; /* Adjust this value to set the maximum height of the slide-down */
+}
+
+.profile-links a {
+  display: block;
+  margin: 15px; /* Add spacing between the links */
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <h2>User Profile</h2>
+    <div>
+      <div>
+        <% if (profilePictureURL) { %>
+        <img
+          style="
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+          "
+          src="./uploads/<%= profilePictureURL %>"
+          alt="Profile Picture"
+        />
+        <% } else { %>
+        <img
+          style="
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+          "
+          src="https://cdn.glitch.global/48491b29-1786-48b2-b4a6-5cb4f74999e0/pfp.png?v=1689801003255"
+          alt="Default Profile Picture"
+        />
+        <% } %>
+      </div>
+      <p><strong>Username:</strong> <span><%= username %></span></p>
+      <p><strong>Email:</strong> <span><%= email %></span></p>
+
+      <!-- Add other profile information here -->
+
+      <!-- Add a link to open the "Update Profile" form -->
+      <a href="/edit-profile">Update Profile</a>
+      <br />
+      <!-- Add links to delete profile picture and delete account -->
+      <% if (profilePictureURL) { %>
+      <a href="/delete-profile-picture">Delete Profile Picture</a>
+      <br />
+      <% } %>
+      <a href="/delete-account">Delete Account</a>
+      <br />
+
+      <a href="/logout">Logout</a>
+      <br />
+      <a href="/home">Back to home</a>
+    </div>
+  </body>
+</html>
