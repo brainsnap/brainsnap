@@ -165,7 +165,7 @@ app.post("/signup", (req, res) => {
                   from: process.env.EMAIL_USERNAME,
                   to: user.email,
                   subject: "Account Verification",
-                  text: `Hello ${user.username},\n\nThank you for signing up. Please click on the following link to verify your account:\n\nhttp://localhost:3000/verify-account?token=${verificationToken}\n\nThis token will expire in 1 hour. If you did not sign up for an account, please ignore this email.\n\nBest regards,\nThe Team`,
+                  text: `Hello ${user.username},\n\nThank you for signing up. Please click on the following link to verify your account:\n\nhttps://brainsnap.onrender.com//verify-account?token=${verificationToken}\n\nThis token will expire in 1 hour. If you did not sign up for an account, please ignore this email.\n\nBest regards,\nThe Team`,
                 };
 
                 transporter.sendMail(mailOptions, (error, info) => {
@@ -309,7 +309,7 @@ app.post("/forgot-password", (req, res) => {
         from: process.env.EMAIL_USERNAME,
         to: updatedUser.email,
         subject: "Password Reset",
-        text: `Hello ${updatedUser.username},\n\nYou have requested a password reset. Please click on the following link to reset your password:\n\nhttp://localhost:3000/reset-password\n\nYour Token is : ${resetToken}.\n\nThis token will expire in 1 hour. If you did not request a password reset, please ignore this email.\n\nBest regards,\nThe Team`,
+        text: `Hello ${updatedUser.username},\n\nYou have requested a password reset. Please click on the following link to reset your password:\n\nhttps://brainsnap.onrender.com//reset-password\n\nYour Token is : ${resetToken}.\n\nThis token will expire in 1 hour. If you did not request a password reset, please ignore this email.\n\nBest regards,\nThe Team`,
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
