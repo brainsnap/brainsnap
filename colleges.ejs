@@ -67,10 +67,10 @@
             <i class="fa-regular fa-user" style="color: #000000"></i>
           </div>
           <% if (profilePictureURL) { %>
-          <img src="./uploads/<%= profilePictureURL %>" alt="Profile Picture" />
+          <img src="./uploads/<%= profilePictureURL %>" alt="Profile Picture" class="pfp" />
           <% } else { %>
           <img
-            class="h-16 w-16 rounded-full object-cover"
+            class="pfp"
             src="https://cdn.glitch.global/48491b29-1786-48b2-b4a6-5cb4f74999e0/pfp.png?v=1689801003255"
             alt="Default Profile Picture"
           />
